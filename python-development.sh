@@ -12,12 +12,12 @@
 # ===========================================
 
 # User-configurable options
-PYTHON_DEFAULT_VERSION=${PYTHON_DEFAULT_VERSION:-"python3"}  # Default Python interpreter
-PYTHON_VENV_DIR=${PYTHON_VENV_DIR:-"venv"}                  # Default virtual environment directory
-PYTHON_AUTO_ACTIVATE=${PYTHON_AUTO_ACTIVATE:-1}             # Auto-activate virtual environment (0=off, 1=on)
+PYTHON_DEFAULT_VERSION=${PYTHON_DEFAULT_VERSION:-"python3"}              # Default Python interpreter
+PYTHON_VENV_DIR=${PYTHON_VENV_DIR:-"venv"}                               # Default virtual environment directory
+PYTHON_AUTO_ACTIVATE=${PYTHON_AUTO_ACTIVATE:-1}                          # Auto-activate virtual environment (0=off, 1=on)
 PYTHON_COMMON_PACKAGES=${PYTHON_COMMON_PACKAGES:-"pytest black flake8"}  # Common dev packages
-PYTHON_PREFER_PIPENV=${PYTHON_PREFER_PIPENV:-0}             # Prefer pipenv over venv (0=off, 1=on)
-PYTHON_PACKAGE_MANAGER=${PYTHON_PACKAGE_MANAGER:-"pip"}      # pip, pipenv, or poetry
+PYTHON_PREFER_PIPENV=${PYTHON_PREFER_PIPENV:-0}                          # Prefer pipenv over venv (0=off, 1=on)
+PYTHON_PACKAGE_MANAGER=${PYTHON_PACKAGE_MANAGER:-"pip"}                  # pip, pipenv, or poetry
 
 # ===========================================
 # Python Command Aliases
