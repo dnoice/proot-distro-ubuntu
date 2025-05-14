@@ -3,7 +3,7 @@
 # Prompt Configuration
 # ===========================================
 # A customizable, informative prompt with git integration, error codes, and visual enhancements
-# Author: Claude & You
+# Author: Claude & Me
 # Version: 1.0
 # Last Updated: 2025-05-14
 
