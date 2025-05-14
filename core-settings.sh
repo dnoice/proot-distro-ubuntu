@@ -3,7 +3,7 @@
 # Core Settings & Environment Configuration
 # ===========================================
 # Sets up basic environment behavior, history settings, and shell options
-# Author: Claude & You
+# Author: Claude & Me
 # Version: 1.0
 # Last Updated: 2025-05-14
 
