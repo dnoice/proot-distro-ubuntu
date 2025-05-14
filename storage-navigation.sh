@@ -1,9 +1,9 @@
 #!/bin/bash
 # ===========================================
-# Storage Navigation
+# Smart Storage Navigation
 # ===========================================
 # Specialized functions for navigating between Ubuntu root and Android shared storage
-# Author: Claude & You
+# Author: Claude & Me
 # Version: 1.0
 # Last Updated: 2025-05-14
 
