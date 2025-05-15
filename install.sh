@@ -149,54 +149,51 @@ print_success "Created module directory: $MODULE_DIR"
 # Copy module files
 print_info "Copying module files..."
 
-# Function to write a module file
-function write_module() {
-    local module_name="$1"
-    local content="$2"
-    local module_path="${MODULE_DIR}/${module_name}"
+# Copy module-loader.sh first (it's critical)
+if [ -f "module-loader.sh" ]; then
+    cp "module-loader.sh" "${MODULE_DIR}/00-module-loader.sh"
+    chmod +x "${MODULE_DIR}/00-module-loader.sh"
+    print_success "Installed 00-module-loader.sh"
+else
+    print_error "Module loader file 'module-loader.sh' not found"
+    exit 1
+fi
+
+# Map source files to destination module names
+declare -A MODULE_MAP
+MODULE_MAP=(
+    ["core-settings.sh"]="01-core-settings.sh"
+    ["prompt.sh"]="02-prompt.sh"
+    ["storage-navigation.sh"]="03-storage-navigation.sh"
+    ["file-operations.sh"]="04-file-operations.sh"
+    ["git-integration.sh"]="05-git-integration.sh"
+    ["python-development.sh"]="06-python-development.sh"
+    ["system-management.sh"]="07-system-management.sh"
+    ["productivity-tools.sh"]="08-productivity-tools.sh"
+    ["network-utilities.sh"]="09-network-utilities.sh"
+    ["custom-utilities.sh"]="10-custom-utilities.sh"
+)
+
+# Copy all module files
+for source_file in "${!MODULE_MAP[@]}"; do
+    dest_file="${MODULE_MAP[$source_file]}"
     
-    echo "$content" > "$module_path"
-    chmod +x "$module_path"
-    print_success "Created $module_name"
-}
+    if [ -f "$source_file" ]; then
+        cp "$source_file" "${MODULE_DIR}/${dest_file}"
+        chmod +x "${MODULE_DIR}/${dest_file}"
+        print_success "Installed ${dest_file}"
+    else
+        print_warning "Source file '$source_file' not found, creating placeholder"
+        
+        # Create minimal placeholder with proper header
+        echo "#!/bin/bash" > "${MODULE_DIR}/${dest_file}"
+        echo "# Missing module: ${dest_file}" >> "${MODULE_DIR}/${dest_file}"
+        echo "echo -e \"\${RED}Warning: ${dest_file} is a placeholder. Original module not found during installation.\${RESET}\"" >> "${MODULE_DIR}/${dest_file}"
+        chmod +x "${MODULE_DIR}/${dest_file}"
+    fi
+done
 
-# Copy each module (the content would be the actual content of each module file)
-# For demonstration purposes, I'll just create placeholder files:
-
-# Create 00-module-loader.sh
-write_module "00-module-loader.sh" "# Module loader content goes here"
-
-# Create 01-core-settings.sh
-write_module "01-core-settings.sh" "# Core settings content goes here"
-
-# Create 02-prompt.sh
-write_module "02-prompt.sh" "# Prompt configuration content goes here"
-
-# Create 03-storage-navigation.sh
-write_module "03-storage-navigation.sh" "# Storage navigation content goes here"
-
-# Create 04-file-operations.sh
-write_module "04-file-operations.sh" "# File operations content goes here"
-
-# Create 05-git-integration.sh
-write_module "05-git-integration.sh" "# Git integration content goes here"
-
-# Create 06-python-development.sh
-write_module "06-python-development.sh" "# Python development content goes here"
-
-# Create 07-system-management.sh
-write_module "07-system-management.sh" "# System management content goes here"
-
-# Create 08-productivity-tools.sh
-write_module "08-productivity-tools.sh" "# Productivity tools content goes here"
-
-# Create 09-network-utilities.sh
-write_module "09-network-utilities.sh" "# Network utilities content goes here"
-
-# Create 10-custom-utilities.sh
-write_module "10-custom-utilities.sh" "# Custom utilities content goes here"
-
-print_success "All module files created"
+print_success "All module files installed"
 
 # ===========================================
 # Install Main .bashrc
