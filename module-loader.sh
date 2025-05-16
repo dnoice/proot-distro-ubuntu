@@ -3,9 +3,9 @@
 # Module Loader
 # ===========================================
 # The core system that loads all modular bashrc components
-# Author: Claude & Me
-# Version: 1.1
-# Last Updated: 2025-05-14
+# Author: [Your Name]
+# Version: 1.2
+# Last Updated: 2025-05-15
 
 # ===========================================
 # Environment Variables
