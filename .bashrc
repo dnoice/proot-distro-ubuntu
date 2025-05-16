@@ -4,9 +4,9 @@
 # ===========================================
 # Modular Bash configuration for proot-distro Ubuntu environment in Termux
 # FULL DEV STACK CAPABILITIES right from your Android Device
-# Author: Claude & Me
-# Version: 3.1
-# Last Updated: 2025-05-14
+# Author: [Your Name]
+# Version: 3.2
+# Last Updated: 2025-05-15
 
 # ===========================================
 # Core Initialization
@@ -60,8 +60,8 @@ fi
 # ===========================================
 
 # Bashrc system version info
-export BASHRC_SYSTEM_VERSION="3.1"
-export BASHRC_SYSTEM_DATE="2025-05-14"
+export BASHRC_SYSTEM_VERSION="3.2"
+export BASHRC_SYSTEM_DATE="2025-05-15"
 
 # Function to check for updates (if curl is available)
 function check_bashrc_updates() {
